@@ -1,0 +1,19 @@
+---
+title: "decimal place counter"
+author: "Melanie K. Taylor"
+date: "2025-09-17"
+output: html_document
+---
+
+```{r}
+#This is a function you can run on a column to count the number of decimal 
+# places represented:
+count_decimals <- function(x) {
+  ifelse(is.na(x), NA,
+         nchar(sub("^[^.]*\\.?","", format(x, scientific = FALSE))))
+}
+
+#This is the line to make the number of decimal places a new column:
+df$decimal_places <- count_decimals(df$column_of_curiosity)
+```
+
